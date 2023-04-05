@@ -1,0 +1,4 @@
+.minio.sys/
+docker/
+jar/
+postgres-data/
