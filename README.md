@@ -1,4 +1,4 @@
-# [WIP] MiniKo: Data as a Service
+# [WIP] MiniKo
 The purpose of this repository is to create a unified Data Lake Infrastructure for localized Data Product development. 
 
 
