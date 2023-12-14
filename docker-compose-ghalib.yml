@@ -1,0 +1,41 @@
+version: '3.7'
+
+volumes:
+  postgres:
+  pgadmin:
+
+services:
+  postgres:
+    container_name: postgres
+    image: "postgres:14"
+    environment:
+      POSTGRES_USER: "user"
+      POSTGRES_PASSWORD: "admin"
+      PGDATA: "/data/postgres"
+    volumes:
+      - postgres:/data/postgres
+      - ./config/docker_postgres_init.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql
+    ports:
+      - "15432:5432"
+    restart: unless-stopped
+
+  pgadmin:
+    container_name: pgadmin
+    image: "dpage/pgadmin4:latest"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+      PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: "False"
+      PGPASSFILE: "/pgadmin4/.pgpass"
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+      - ./config/pgadmin/docker_pgadmin_servers.json:/pgadmin4/servers.json
+      - ./config/pgadmin/pgpass:/pgadmin4/.pgpass
+    ports:
+      - "15433:80"
+    entrypoint:
+      - "/bin/sh"
+      - "-c"
+      - "cp -f /pgadmin4/.pgpass /var/lib/pgadmin/.pgpass && chmod 0600 /var/lib/pgadmin/.pgpass && /entrypoint.sh"
+    restart: unless-stopped

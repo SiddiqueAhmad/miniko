@@ -2,3 +2,5 @@
 docker/
 jar/
 postgres-data/
+metabase-data/
+minio-data/

@@ -1,0 +1,13 @@
+{
+  "Servers": {
+    "1": {
+      "Name": "local-pg-server",
+      "Group": "Servers",
+      "Port": 5432,
+      "Username": "user",
+      "PassFile": "/var/lib/pgadmin/.pgpass",
+      "Host": "postgres",
+      "MaintenanceDB": "query-metadata"
+    }
+  }
+}
