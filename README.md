@@ -6,6 +6,9 @@ The purpose of this repository is to create a unified Data Lake Infrastructure f
 
 
 ``` docker-compose -f docker-compose-batched.yml ```
+``` docker compose -f docker-compose-batched.yml up --build  ```
+### DAEMON : Docker in background
+``` docker compose -f docker-compose-batched.yml up -d  ```
 
 ## MINIO:
 

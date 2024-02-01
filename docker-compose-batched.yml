@@ -107,14 +107,14 @@ services:
       MINIO_ROOT_PASSWORD: admin123456
     command: server --address :9010 --console-address :9011 /data
 
-  metabase-app:
-    image: metabase/metabase
-    restart: always
-    ports:
-      - 3001:3000
-    volumes:
-      # declare your mount volume /host/dir:/container/dir
-      - ./metabase-data:/metabase-data
+#  metabase-app:
+#    image: metabase/metabase
+#    restart: always
+#    ports:
+#      - 3001:3000
+#    volumes:
+#      # declare your mount volume /host/dir:/container/dir
+#      - ./metabase-data:/metabase-data
 
 
 
