@@ -38,11 +38,11 @@
 
     <property>
         <name>fs.s3a.access.key</name>
-        <value>ZPA97JNPRRxPEDztrXlc</value>
+        <value>admin</value>
     </property>
     <property>
         <name>fs.s3a.secret.key</name>
-        <value>ckBTmW7EnzwAA5bsY4W7ejwNqNFm6hqJTYDzjl2Q</value>
+        <value>admin123456</value>
     </property>
     <property>
         <name>fs.s3a.endpoint</name>
