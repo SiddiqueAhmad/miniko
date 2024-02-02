@@ -131,10 +131,10 @@ services:
 ## HIVE METASTORE
 
   mariadb:
-    image: mariadb:latest
+    image: mariadb:10.11.2
     ports:
       - 3306:3306
-    command: "--log-bin"
+    command: "--log-bin --max_connections=1000 --max_user_connections=1000"
     environment:
       MYSQL_ROOT_PASSWORD: admin
       MYSQL_USER: admin
