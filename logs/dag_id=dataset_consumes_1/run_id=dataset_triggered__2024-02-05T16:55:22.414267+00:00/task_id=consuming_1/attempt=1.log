@@ -1,0 +1,19 @@
+[2024-02-05T16:55:31.262+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dataset_consumes_1.consuming_1 dataset_triggered__2024-02-05T16:55:22.414267+00:00 [queued]>
+[2024-02-05T16:55:31.271+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dataset_consumes_1.consuming_1 dataset_triggered__2024-02-05T16:55:22.414267+00:00 [queued]>
+[2024-02-05T16:55:31.272+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2024-02-05T16:55:31.285+0000] {taskinstance.py:2191} INFO - Executing <Task(BashOperator): consuming_1> on 2024-02-05 16:55:22.414267+00:00
+[2024-02-05T16:55:31.295+0000] {standard_task_runner.py:60} INFO - Started process 113 to run task
+[2024-02-05T16:55:31.299+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'dataset_consumes_1', 'consuming_1', 'dataset_triggered__2024-02-05T16:55:22.414267+00:00', '--job-id', '912', '--raw', '--subdir', '/home/***/.local/lib/python3.8/site-packages/***/example_dags/example_datasets.py', '--cfg-path', '/tmp/tmprxs0wwba']
+[2024-02-05T16:55:31.306+0000] {standard_task_runner.py:88} INFO - Job 912: Subtask consuming_1
+[2024-02-05T16:55:31.366+0000] {task_command.py:423} INFO - Running <TaskInstance: dataset_consumes_1.consuming_1 dataset_triggered__2024-02-05T16:55:22.414267+00:00 [running]> on host 4c8a056a70fd
+[2024-02-05T16:55:31.463+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dataset_consumes_1' AIRFLOW_CTX_TASK_ID='consuming_1' AIRFLOW_CTX_EXECUTION_DATE='2024-02-05T16:55:22.414267+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='dataset_triggered__2024-02-05T16:55:22.414267+00:00'
+[2024-02-05T16:55:31.467+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2024-02-05T16:55:31.469+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'sleep 5']
+[2024-02-05T16:55:31.487+0000] {subprocess.py:86} INFO - Output:
+[2024-02-05T16:55:36.496+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2024-02-05T16:55:36.525+0000] {warnings.py:109} WARNING - /home/***/.local/lib/python3.8/site-packages/***/models/baseoperator.py:1469: RemovedInAirflow3Warning: Passing 'execution_date' to 'TaskInstance.xcom_push()' is deprecated.
+  context["ti"].xcom_push(key=key, value=value, execution_date=execution_date)
+
+[2024-02-05T16:55:36.546+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=dataset_consumes_1, task_id=consuming_1, execution_date=20240205T165522, start_date=20240205T165531, end_date=20240205T165536
+[2024-02-05T16:55:36.605+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-02-05T16:55:36.633+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

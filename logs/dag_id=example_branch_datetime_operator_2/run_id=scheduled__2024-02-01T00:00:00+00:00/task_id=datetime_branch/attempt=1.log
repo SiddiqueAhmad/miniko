@@ -1,0 +1,30 @@
+[2024-02-02T14:53:40.689+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: example_branch_datetime_operator_2.datetime_branch scheduled__2024-02-01T00:00:00+00:00 [queued]>
+[2024-02-02T14:53:40.699+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: example_branch_datetime_operator_2.datetime_branch scheduled__2024-02-01T00:00:00+00:00 [queued]>
+[2024-02-02T14:53:40.701+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2024-02-02T14:53:40.739+0000] {taskinstance.py:2191} INFO - Executing <Task(BranchDateTimeOperator): datetime_branch> on 2024-02-01 00:00:00+00:00
+[2024-02-02T14:53:40.746+0000] {standard_task_runner.py:60} INFO - Started process 223 to run task
+[2024-02-02T14:53:40.754+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'example_branch_datetime_operator_2', 'datetime_branch', 'scheduled__2024-02-01T00:00:00+00:00', '--job-id', '13', '--raw', '--subdir', '/home/***/.local/lib/python3.8/site-packages/***/example_dags/example_branch_datetime_operator.py', '--cfg-path', '/tmp/tmpzydlzox7']
+[2024-02-02T14:53:40.758+0000] {standard_task_runner.py:88} INFO - Job 13: Subtask datetime_branch
+[2024-02-02T14:53:40.831+0000] {task_command.py:423} INFO - Running <TaskInstance: example_branch_datetime_operator_2.datetime_branch scheduled__2024-02-01T00:00:00+00:00 [running]> on host eb67b5c996d2
+[2024-02-02T14:53:41.000+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='example_branch_datetime_operator_2' AIRFLOW_CTX_TASK_ID='datetime_branch' AIRFLOW_CTX_EXECUTION_DATE='2024-02-01T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-02-01T00:00:00+00:00'
+[2024-02-02T14:53:41.007+0000] {branch.py:35} INFO - Branch into ['date_outside_range']
+[2024-02-02T14:53:41.010+0000] {skipmixin.py:178} INFO - Following branch ['date_outside_range']
+[2024-02-02T14:53:41.040+0000] {skipmixin.py:244} INFO - Skipping tasks [('date_in_range', -1)]
+[2024-02-02T14:53:41.111+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=example_branch_datetime_operator_2, task_id=datetime_branch, execution_date=20240201T000000, start_date=20240202T145340, end_date=20240202T145341
+[2024-02-02T14:53:41.183+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-02-02T14:53:41.222+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-02-02T15:12:20.787+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: example_branch_datetime_operator_2.datetime_branch scheduled__2024-02-01T00:00:00+00:00 [queued]>
+[2024-02-02T15:12:20.810+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: example_branch_datetime_operator_2.datetime_branch scheduled__2024-02-01T00:00:00+00:00 [queued]>
+[2024-02-02T15:12:20.812+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2024-02-02T15:12:20.829+0000] {taskinstance.py:2191} INFO - Executing <Task(BranchDateTimeOperator): datetime_branch> on 2024-02-01 00:00:00+00:00
+[2024-02-02T15:12:20.837+0000] {standard_task_runner.py:60} INFO - Started process 89 to run task
+[2024-02-02T15:12:20.842+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'example_branch_datetime_operator_2', 'datetime_branch', 'scheduled__2024-02-01T00:00:00+00:00', '--job-id', '6', '--raw', '--subdir', '/home/***/.local/lib/python3.8/site-packages/***/example_dags/example_branch_datetime_operator.py', '--cfg-path', '/tmp/tmpg33_l24f']
+[2024-02-02T15:12:20.847+0000] {standard_task_runner.py:88} INFO - Job 6: Subtask datetime_branch
+[2024-02-02T15:12:20.916+0000] {task_command.py:423} INFO - Running <TaskInstance: example_branch_datetime_operator_2.datetime_branch scheduled__2024-02-01T00:00:00+00:00 [running]> on host a2bff7913869
+[2024-02-02T15:12:20.987+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='example_branch_datetime_operator_2' AIRFLOW_CTX_TASK_ID='datetime_branch' AIRFLOW_CTX_EXECUTION_DATE='2024-02-01T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-02-01T00:00:00+00:00'
+[2024-02-02T15:12:21.000+0000] {branch.py:35} INFO - Branch into ['date_in_range']
+[2024-02-02T15:12:21.006+0000] {skipmixin.py:178} INFO - Following branch ['date_in_range']
+[2024-02-02T15:12:21.028+0000] {skipmixin.py:244} INFO - Skipping tasks [('date_outside_range', -1)]
+[2024-02-02T15:12:21.096+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=example_branch_datetime_operator_2, task_id=datetime_branch, execution_date=20240201T000000, start_date=20240202T151220, end_date=20240202T151221
+[2024-02-02T15:12:21.140+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-02-02T15:12:21.161+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
