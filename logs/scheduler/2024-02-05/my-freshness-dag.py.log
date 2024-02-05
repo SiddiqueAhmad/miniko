@@ -565,3 +565,31 @@
 [2024-02-05T17:35:51.562+0000] {logging_mixin.py:188} INFO - [2024-02-05T17:35:51.562+0000] {dag.py:3036} INFO - Sync 1 DAGs
 [2024-02-05T17:35:51.581+0000] {logging_mixin.py:188} INFO - [2024-02-05T17:35:51.581+0000] {dag.py:3823} INFO - Setting next_dagrun for ops_silver_trigger_30min_SLA to 2024-02-05 00:00:00+00:00, run_after=2024-02-06 00:00:00+00:00
 [2024-02-05T17:35:51.601+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/my-freshness-dag.py took 0.091 seconds
+[2024-02-05T17:36:21.716+0000] {processor.py:161} INFO - Started process (PID=4914) to work on /opt/airflow/dags/my-freshness-dag.py
+[2024-02-05T17:36:21.719+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/my-freshness-dag.py for tasks to queue
+[2024-02-05T17:36:21.722+0000] {logging_mixin.py:188} INFO - [2024-02-05T17:36:21.722+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/my-freshness-dag.py
+[2024-02-05T17:36:21.733+0000] {processor.py:840} INFO - DAG(s) 'ops_silver_trigger_30min_SLA' retrieved from /opt/airflow/dags/my-freshness-dag.py
+[2024-02-05T17:36:21.752+0000] {logging_mixin.py:188} INFO - [2024-02-05T17:36:21.751+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2024-02-05T17:36:21.773+0000] {logging_mixin.py:188} INFO - [2024-02-05T17:36:21.773+0000] {dag.py:3823} INFO - Setting next_dagrun for ops_silver_trigger_30min_SLA to 2024-02-05 00:00:00+00:00, run_after=2024-02-06 00:00:00+00:00
+[2024-02-05T17:36:21.792+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/my-freshness-dag.py took 0.080 seconds
+[2024-02-05T17:36:52.077+0000] {processor.py:161} INFO - Started process (PID=4970) to work on /opt/airflow/dags/my-freshness-dag.py
+[2024-02-05T17:36:52.097+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/my-freshness-dag.py for tasks to queue
+[2024-02-05T17:36:52.107+0000] {logging_mixin.py:188} INFO - [2024-02-05T17:36:52.105+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/my-freshness-dag.py
+[2024-02-05T17:36:52.152+0000] {processor.py:840} INFO - DAG(s) 'ops_silver_trigger_30min_SLA' retrieved from /opt/airflow/dags/my-freshness-dag.py
+[2024-02-05T17:36:52.235+0000] {logging_mixin.py:188} INFO - [2024-02-05T17:36:52.235+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2024-02-05T17:36:52.295+0000] {logging_mixin.py:188} INFO - [2024-02-05T17:36:52.295+0000] {dag.py:3823} INFO - Setting next_dagrun for ops_silver_trigger_30min_SLA to 2024-02-05 00:00:00+00:00, run_after=2024-02-06 00:00:00+00:00
+[2024-02-05T17:36:52.388+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/my-freshness-dag.py took 0.353 seconds
+[2024-02-05T17:37:22.970+0000] {processor.py:161} INFO - Started process (PID=5032) to work on /opt/airflow/dags/my-freshness-dag.py
+[2024-02-05T17:37:22.974+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/my-freshness-dag.py for tasks to queue
+[2024-02-05T17:37:22.979+0000] {logging_mixin.py:188} INFO - [2024-02-05T17:37:22.978+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/my-freshness-dag.py
+[2024-02-05T17:37:22.996+0000] {processor.py:840} INFO - DAG(s) 'ops_silver_trigger_30min_SLA' retrieved from /opt/airflow/dags/my-freshness-dag.py
+[2024-02-05T17:37:23.015+0000] {logging_mixin.py:188} INFO - [2024-02-05T17:37:23.015+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2024-02-05T17:37:23.032+0000] {logging_mixin.py:188} INFO - [2024-02-05T17:37:23.032+0000] {dag.py:3823} INFO - Setting next_dagrun for ops_silver_trigger_30min_SLA to 2024-02-05 00:00:00+00:00, run_after=2024-02-06 00:00:00+00:00
+[2024-02-05T17:37:23.048+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/my-freshness-dag.py took 0.085 seconds
+[2024-02-05T17:37:53.185+0000] {processor.py:161} INFO - Started process (PID=5090) to work on /opt/airflow/dags/my-freshness-dag.py
+[2024-02-05T17:37:53.191+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/my-freshness-dag.py for tasks to queue
+[2024-02-05T17:37:53.203+0000] {logging_mixin.py:188} INFO - [2024-02-05T17:37:53.201+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/my-freshness-dag.py
+[2024-02-05T17:37:53.250+0000] {processor.py:840} INFO - DAG(s) 'ops_silver_trigger_30min_SLA' retrieved from /opt/airflow/dags/my-freshness-dag.py
+[2024-02-05T17:37:53.292+0000] {logging_mixin.py:188} INFO - [2024-02-05T17:37:53.291+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2024-02-05T17:37:53.343+0000] {logging_mixin.py:188} INFO - [2024-02-05T17:37:53.342+0000] {dag.py:3823} INFO - Setting next_dagrun for ops_silver_trigger_30min_SLA to 2024-02-05 00:00:00+00:00, run_after=2024-02-06 00:00:00+00:00
+[2024-02-05T17:37:53.384+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/my-freshness-dag.py took 0.207 seconds
