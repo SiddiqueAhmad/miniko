@@ -3,3 +3,4 @@ jar/
 postgres-data/
 metabase-data/
 minio-data/
+logs
