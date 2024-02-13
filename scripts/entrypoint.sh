@@ -1,29 +1,66 @@
-#!/bin/sh
+#!/bin/bash
 
-export HADOOP_HOME=/opt/hadoop-3.2.0
-export HADOOP_CLASSPATH=${HADOOP_HOME}/share/hadoop/tools/lib/aws-java-sdk-bundle-1.11.375.jar:${HADOOP_HOME}/share/hadoop/tools/lib/hadoop-aws-3.2.0.jar
-export JAVA_HOME=/usr/local/openjdk-8
+#
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
 
-# Make sure mariadb is ready
-MAX_TRIES=8
-CURRENT_TRY=1
-SLEEP_BETWEEN_TRY=4
-until [ "$(telnet mariadb 3306 | sed -n 2p)" = "Connected to mariadb." ] || [ "$CURRENT_TRY" -gt "$MAX_TRIES" ]; do
-    echo "Waiting for mariadb server..."
-    sleep "$SLEEP_BETWEEN_TRY"
-    CURRENT_TRY=$((CURRENT_TRY + 1))
-done
+set -x
 
-if [ "$CURRENT_TRY" -gt "$MAX_TRIES" ]; then
-  echo "WARNING: Timeout when waiting for mariadb."
+: ${DB_DRIVER:=derby}
+
+SKIP_SCHEMA_INIT="${IS_RESUME:-false}"
+[[ $VERBOSE = "true" ]] && VERBOSE_MODE="--verbose" || VERBOSE_MODE=""
+
+function initialize_hive {
+  COMMAND="-initOrUpgradeSchema"
+  if [ "$(echo "$HIVE_VER" | cut -d '.' -f1)" -lt "4" ]; then
+     COMMAND="-${SCHEMA_COMMAND:-initSchema}"
+  fi
+  $HIVE_HOME/bin/schematool -dbType $DB_DRIVER $COMMAND $VERBOSE_MODE
+  if [ $? -eq 0 ]; then
+    echo "Initialized schema successfully.."
+  else
+    echo "Schema initialization failed!"
+    exit 1
+  fi
+}
+
+export HIVE_CONF_DIR=$HIVE_HOME/conf
+if [ -d "${HIVE_CUSTOM_CONF_DIR:-}" ]; then
+  find "${HIVE_CUSTOM_CONF_DIR}" -type f -exec \
+    ln -sfn {} "${HIVE_CONF_DIR}"/ \;
+  export HADOOP_CONF_DIR=$HIVE_CONF_DIR
+  export TEZ_CONF_DIR=$HIVE_CONF_DIR
 fi
 
-# Check if schema exists
-/opt/apache-hive-metastore-3.0.0-bin/bin/schematool -dbType mysql -info
-
-if [ $? -eq 1 ]; then
-  echo "Getting schema info failed. Probably not initialized. Initializing..."
-  /opt/apache-hive-metastore-3.0.0-bin/bin/schematool -initSchema -dbType mysql
+export HADOOP_CLIENT_OPTS="$HADOOP_CLIENT_OPTS -Xmx1G $SERVICE_OPTS"
+if [[ "${SKIP_SCHEMA_INIT}" == "false" ]]; then
+  # handles schema initialization
+  initialize_hive
 fi
 
-/opt/apache-hive-metastore-3.0.0-bin/bin/start-metastore
+export HADOOP_VERSION=3.2.0
+export HADOOP_HOME=/opt/hadoop-${HADOOP_VERSION}
+export HADOOP_CLASSPATH=${HADOOP_HOME}/share/hadoop/tools/lib/aws-java-sdk-bundle-1.11.375.jar:${HADOOP_HOME}/share/hadoop/tools/lib/hadoop-aws-${HADOOP_VERSION}.jar
+
+
+if [ "${SERVICE_NAME}" == "hiveserver2" ]; then
+  export HADOOP_CLASSPATH=$TEZ_HOME/*:$TEZ_HOME/lib/*:$HADOOP_CLASSPATH
+  exec $HIVE_HOME/bin/hive --skiphadoopversion --skiphbasecp --service $SERVICE_NAME
+elif [ "${SERVICE_NAME}" == "metastore" ]; then
+  export METASTORE_PORT=${METASTORE_PORT:-9083}
+  exec $HIVE_HOME/bin/hive --skiphadoopversion --skiphbasecp $VERBOSE_MODE --service $SERVICE_NAME
+fi

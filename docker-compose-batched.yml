@@ -54,10 +54,20 @@ services:
   hive-metastore:
     build: .
     image: hive-metastore:latest
+    volumes:
+      - ./beeline:/home/hive/.beeline
+    environment:
+      - SERVICE_NAME=metastore
+      - IS_RESUME=true
+      - DB_DRIVER=mysql
+      - HADOOP_VERSION=3.2.0
+      - HADOOP_HOME=/opt/hadoop-3.2.0
+      - HADOOP_CLASSPATH=/opt/hadoop-3.2.0/share/hadoop/tools/lib/aws-java-sdk-bundle-1.11.375.jar:/opt/hadoop-3.2.0/share/hadoop/tools/lib/hadoop-aws-3.2.0.jar
     ports:
     - 9083:9083
     depends_on:
       - mariadb
+
 
 networks:
   default:
