@@ -3,5 +3,5 @@ jar/
 postgres-data/
 metabase-data/
 minio-data/
-logs
+logs/
 .beeline
