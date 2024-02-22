@@ -59,7 +59,8 @@ services:
     hostname: metastore
     volumes:
       - ./beeline:/home/hive/.beeline
-      - ./scripts/hive/conf:/opt/hive/conf
+      - ./scripts/hive/meta-conf:/opt/hive/conf
+      - ./scripts/hive/log:/tmp/hive
     environment:
       - SERVICE_NAME=metastore
       - IS_RESUME=true
@@ -75,7 +76,8 @@ services:
     restart: unless-stopped
     container_name: hiveserver2
     volumes:
-      - ./scripts/hive/conf:/opt/hive/conf
+      - ./scripts/hive/hive-conf:/opt/hive/conf
+      - ./scripts/hive/log:/tmp/hive
     environment:
       - SERVICE_NAME=hiveserver2
       - HIVE_SERVER2_THRIFT_PORT = 10000
