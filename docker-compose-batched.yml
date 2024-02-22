@@ -36,7 +36,7 @@ services:
       GOOGLE_APPLICATION_CREDENTIALS: /etc/trino/catalog/bigquery.json
 
     ports:
-      - "8080:8080"
+      - "8081:8080"
       - "8889:8889"
 
 ## HIVE METASTORE
@@ -51,23 +51,42 @@ services:
       MYSQL_PASSWORD: admin
       MYSQL_DATABASE: metastore_db
 
-  hive-metastore:
+  metastore:
     build: .
     image: hive-metastore:latest
+    restart: unless-stopped
+    container_name: metastore
+    hostname: metastore
     volumes:
       - ./beeline:/home/hive/.beeline
+      - ./scripts/hive/conf:/opt/hive/conf
     environment:
       - SERVICE_NAME=metastore
       - IS_RESUME=true
       - DB_DRIVER=mysql
-      - HADOOP_VERSION=3.2.0
-      - HADOOP_HOME=/opt/hadoop-3.2.0
-      - HADOOP_CLASSPATH=/opt/hadoop-3.2.0/share/hadoop/tools/lib/aws-java-sdk-bundle-1.11.375.jar:/opt/hadoop-3.2.0/share/hadoop/tools/lib/hadoop-aws-3.2.0.jar
     ports:
     - 9083:9083
     depends_on:
       - mariadb
 
+  hiveserver2:
+    build: .
+    image: hive-metastore:latest
+    restart: unless-stopped
+    container_name: hiveserver2
+    volumes:
+      - ./scripts/hive/conf:/opt/hive/conf
+    environment:
+      - SERVICE_NAME=hiveserver2
+      - HIVE_SERVER2_THRIFT_PORT = 10000
+      - IS_RESUME=true
+      - DB_DRIVER=mysql
+      - SERVICE_OPTS = '-Xmx1G -Dhive.metastore.uris=thrift://metastore:9083'
+    ports:
+    - 10000:10000
+    - 10002:10002
+    depends_on:
+      - metastore
 
 networks:
   default:

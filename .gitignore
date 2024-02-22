@@ -4,5 +4,4 @@ postgres-data/
 metabase-data/
 minio-data/
 logs/
-.beeline
-
+.beeline/
