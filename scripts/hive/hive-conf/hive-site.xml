@@ -16,6 +16,14 @@
   limitations under the License.
 -->
 <configuration>
+   <property>
+        <name>hive.server2.metrics.enabled</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>hive.metastore.metrics.enabled</name>
+        <value>true</value>
+    </property>
     <property>
         <name>hive.server2.enable.doAs</name>
         <value>false</value>

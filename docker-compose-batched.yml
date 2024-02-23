@@ -61,12 +61,14 @@ services:
       - ./beeline:/home/hive/.beeline
       - ./scripts/hive/meta-conf:/opt/hive/conf
       - ./scripts/hive/log:/tmp/hive
+      - ./scripts/hive/jmx:/opt/java_metrics
     environment:
       - SERVICE_NAME=metastore
       - IS_RESUME=true
       - DB_DRIVER=mysql
     ports:
     - 9083:9083
+    - 9028:9028
     depends_on:
       - mariadb
 
@@ -78,6 +80,7 @@ services:
     volumes:
       - ./scripts/hive/hive-conf:/opt/hive/conf
       - ./scripts/hive/log:/tmp/hive
+      - ./scripts/hive/jmx:/opt/java_metrics
     environment:
       - SERVICE_NAME=hiveserver2
       - HIVE_SERVER2_THRIFT_PORT = 10000
@@ -87,6 +90,7 @@ services:
     ports:
     - 10000:10000
     - 10002:10002
+    - 9008:9008
     depends_on:
       - metastore
 
